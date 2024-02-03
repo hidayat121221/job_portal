@@ -38,7 +38,7 @@
                         </form>
                     </div>
                     <div class="mt-4 text-center">
-                        <p>Have an account? <a href="{{ route('login') }}">Login</a></p>
+                        <p>Have an account? <a href="{{ route('account.login') }}">Login</a></p>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                         $("#confrim_password").addClass('is-invalid');
                         $('is-invalid').siblings('p').addClass('invalid-feedback').html('');
 
-                        window.location.href='{{ route("login") }}';
+                        window.location.href='{{ route("account.login") }}';
                     }
                 }
             });

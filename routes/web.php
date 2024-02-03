@@ -20,17 +20,19 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 
 
 Route::group([],function(){
-Route::group(['middleware'=>'guest'],function(){
     //Guest route
-    Route::get('account/register',[AccountController::class,'registration'])->name('account.register');
-    Route::get('account/login',[AccountController::class,'login'])->name('account.login');
-    Route::post('account/proccessregister', [AccountController::class, 'processRegistration'])->name('account.processRegistration');
-    Route::post('account/authenticate', [AccountController::class, 'authenticate'])->name('account.authenticate');
+Route::group(['middleware'=>'guest'],function(){
+    Route::get('/register',[AccountController::class,'registration'])->name('account.register');
+    Route::get('/login',[AccountController::class,'login'])->name('account.login');
+    Route::post('/proccessregister', [AccountController::class, 'processRegistration'])->name('account.processRegistration');
+    Route::post('/authenticate', [AccountController::class, 'authenticate'])->name('account.authenticate');
+});
     //Authenticat route
     Route::group(['middleware'=>'auth'],function(){
-        Route::get('account/profile', [AccountController::class, 'profile'])->name('account.profile');
-        Route::get('account/logout', [AccountController::class, 'logout'])->name('account.logout');
+        Route::get('/profile', [AccountController::class, 'profile'])->name('account.profile');
+        Route::post('/profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
+        Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');
       
     });
-});
+
 });
