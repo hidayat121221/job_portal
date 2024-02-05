@@ -30,7 +30,7 @@ Route::group(['middleware'=>'guest'],function(){
     //Authenticat route
     Route::group(['middleware'=>'auth'],function(){
         Route::get('/profile', [AccountController::class, 'profile'])->name('account.profile');
-        Route::post('/profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
+        Route::get('/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
         Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');
       
     });
