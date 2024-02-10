@@ -30,9 +30,11 @@ Route::group(['middleware'=>'guest'],function(){
     //Authenticat route
     Route::group(['middleware'=>'auth'],function(){
         Route::get('/profile', [AccountController::class, 'profile'])->name('account.profile');
-        Route::get('/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
+        Route::put('/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
         Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');
-      
+        Route::get('/update-profile-pic', [AccountController::class, 'updateProfilePic'])->name('account.updateProfilePic');
+        Route::get('/create-job', [AccountController::class, 'createJob'])->name('account.createJob');
+        Route::post('/save-job', [AccountController::class, 'saveJob'])->name('account.saveJob');
     });
 
 });
