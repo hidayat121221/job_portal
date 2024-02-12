@@ -26,6 +26,7 @@
                         <div class="col-md-6 mb-4">
                             <label for="" class="mb-2">Title<span class="req">*</span></label>
                             <input type="text" placeholder="Job Title" id="title" name="title" class="form-control">
+                            <p></p>
                         </div>
                         <div class="col-md-6  mb-4">
                             <label for="" class="mb-2">Category<span class="req">*</span></label>
@@ -37,6 +38,7 @@
                                     @endforeach
                                 @endif
                             </select>
+                            <p></p>
                         </div>
                     </div>
                     
@@ -50,10 +52,12 @@
                                     @endforeach
                                 @endif
                             </select>
+                            <p></p>
                         </div>
                         <div class="col-md-6  mb-4">
                             <label for="" class="mb-2">Vacancy<span class="req">*</span></label>
                             <input type="number" min="1" placeholder="Vacancy" id="vacancy" name="vacancy" class="form-control">
+                            <p></p>
                         </div>
                     </div>
 
@@ -66,29 +70,35 @@
                         <div class="mb-4 col-md-6">
                             <label for="" class="mb-2">Location<span class="req">*</span></label>
                             <input type="text" placeholder="location" id="location" name="location" class="form-control">
+                            <p></p>
                         </div>
                     </div>
 
                     <div class="mb-4">
                         <label for="" class="mb-2">Description<span class="req">*</span></label>
                         <textarea class="form-control" name="description" id="description" cols="5" rows="5" placeholder="Description"></textarea>
+                        <p></p>
                     </div>
                     <div class="mb-4">
                         <label for="" class="mb-2">Benefits</label>
                         <textarea class="form-control" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits"></textarea>
+                        <p></p>
                     </div>
                     <div class="mb-4">
                         <label for="" class="mb-2">Responsibility</label>
                         <textarea class="form-control" name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility"></textarea>
+                        <p></p>
                     </div>
                     <div class="mb-4">
                         <label for="" class="mb-2">Qualifications</label>
                         <textarea class="form-control" name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications"></textarea>
+                        <p></p>
                     </div>
                     
                     <div class="mb-4">
                         <label for="" class="mb-2">Keywords</label>
                         <input type="text" placeholder="keywords" id="keywords" name="keywords" class="form-control">
+                        <p></p>
                     </div>
 
                     <div class="mb-4">
@@ -106,6 +116,7 @@
                         <option value="10">10 years</option>
                         <option value="10_plus">10+ years</option>
                        </select>
+                       <p></p>
                     </div>
 
                     <h3 class="fs-4 mb-1 mt-5 border-top pt-5">Company Details</h3>
@@ -114,17 +125,20 @@
                         <div class="mb-4 col-md-6">
                             <label for="" class="mb-2">Name<span class="req">*</span></label>
                             <input type="text" placeholder="Company Name" id="company_name" name="company_name" class="form-control">
+                            <p></p>
                         </div>
 
                         <div class="mb-4 col-md-6">
                             <label for="" class="mb-2">Location</label>
                             <input type="text" placeholder="Location" id="location" name="location" class="form-control">
+                            <p></p>
                         </div>
                     </div>
 
                     <div class="mb-4">
                         <label for="" class="mb-2">Website</label>
                         <input type="text" placeholder="Website" id="website" name="website" class="form-control">
+                        <p></p>
                     </div>
                 </div> 
                 <div class="card-footer  p-4">
@@ -152,47 +166,132 @@ $("#createJobForms").submit(function(e){
 
             if(response.status == true) {
 
-                $("#name").removeClass('is-invalid')
+                $("#title").removeClass('is-invalid')
                     .siblings('p')
                     .removeClass('invalid-feedback')
                     .html('')
 
-                $("#email").removeClass('is-invalid')
+                $("#category").removeClass('is-invalid')
                     .siblings('p')
                     .removeClass('invalid-feedback')
                     .html('')
 
-                window.location.href="{{ route('account.profile') }}";
+                $("#jobType").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+
+                $("#vacancy").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+
+                $("#location").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+
+                $("#description").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+
+                $("#company_name").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+
+                window.location.href="{{ route('account.myJobs') }}";
 
             } else {
                 var errors = response.errors;
 
-                if (errors.name) {
-                    $("#name").addClass('is-invalid')
+                if (errors.title) {
+                    $("#title").addClass('is-invalid')
                     .siblings('p')
                     .addClass('invalid-feedback')
-                    .html(errors.name)
+                    .html(errors.title)
                 } else {
-                    $("#name").removeClass('is-invalid')
+                    $("#title").removeClass('is-invalid')
                     .siblings('p')
                     .removeClass('invalid-feedback')
                     .html('')
                 }
 
-                if (errors.email) {
-                    $("#email").addClass('is-invalid')
+                if (errors.category) {
+                    $("#category").addClass('is-invalid')
                     .siblings('p')
                     .addClass('invalid-feedback')
-                    .html(errors.email)
+                    .html(errors.category)
                 } else {
-                    $("#email").removeClass('is-invalid')
+                    $("#category").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+                }
+
+                if (errors.jobType) {
+                    $("#jobType").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback')
+                    .html(errors.jobType)
+                } else {
+                    $("#jobType").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+                }
+
+                if (errors.vacancy) {
+                    $("#vacancy").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback')
+                    .html(errors.vacancy)
+                } else {
+                    $("#vacancy").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+                }
+
+                if (errors.location) {
+                    $("#location").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback')
+                    .html(errors.location)
+                } else {
+                    $("#location").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+                }
+
+                if (errors.description) {
+                    $("#description").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback')
+                    .html(errors.description)
+                } else {
+                    $("#description").removeClass('is-invalid')
+                    .siblings('p')
+                    .removeClass('invalid-feedback')
+                    .html('')
+                }
+
+                if (errors.company_name) {
+                    $("#company_name").addClass('is-invalid')
+                    .siblings('p')
+                    .addClass('invalid-feedback')
+                    .html(errors.company_name)
+                } else {
+                    $("#company_name").removeClass('is-invalid')
                     .siblings('p')
                     .removeClass('invalid-feedback')
                     .html('')
                 }
             }
-
         }
+        
     });
 });
 </script>
