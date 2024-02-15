@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="csrf-token" content="2mHeQivILztRLR1RGKGQEm7b3eQm1YTQFciicXJ9">
+	<meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>jobportal</title>
 </head><!DOCTYPE html>
 <html class="no-js" lang="en_AU" />
@@ -76,7 +76,7 @@
 </div>
 <footer class="bg-dark py-3 bg-2">
 <div class="container">
-    <p class="text-center text-white pt-3 fw-bold fs-6">© 2023 xyz company, all right reserved</p>
+    <p class="text-center text-white pt-3 fw-bold fs-6">©Hidayat Ullah company, all right reserved</p>
 </div>
 </footer> 
 <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
@@ -86,15 +86,16 @@
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 <script>
 	
-$.ajaxSetup({
+	$.ajaxSetup({
 	    headers: {
 	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	    }
 });
 	$("#updateProfilePic").submit(function(e){
-		e.preventDefult();
+		e.preventDefault();
 
-		var formData = new formData(this);
+		var formData = new FormData(this);
+
 
 		$.ajax({
 			url :'{{ route('account.updateProfilePic') }}',
@@ -110,7 +111,7 @@ $.ajaxSetup({
 					$("#image_error").html(errors.image)
 				}
 			}else{
-				windwo.location.href='{{ url()->current() }}';
+				window.location.href='{{ url()->current() }}';
 			}
 			}
 		})

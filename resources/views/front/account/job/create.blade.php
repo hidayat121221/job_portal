@@ -152,17 +152,19 @@
 </section>
 @endsection
 
-@section('customJs')
+@section('customjs')
 <script type="text/javascript">
-$("#createJobForms").submit(function(e){
+$("#createJobForm").submit(function(e){
     e.preventDefault();
+    $("button[type='submit']").prop('disabled',true);
 
     $.ajax({
         url: '{{ route("account.saveJob") }}',
-        type: 'post',
+        type: 'POST',
         dataType: 'json',
-        data: $("#createJobForms").serializeArray(),
+        data: $("#createJobForm").serializeArray(),
         success: function(response) {
+            $("button[type='submit']").prop('disabled',false);
 
             if(response.status == true) {
 
@@ -190,6 +192,7 @@ $("#createJobForms").submit(function(e){
                     .siblings('p')
                     .removeClass('invalid-feedback')
                     .html('')
+
 
                 $("#description").removeClass('is-invalid')
                     .siblings('p')
@@ -290,8 +293,8 @@ $("#createJobForms").submit(function(e){
                     .html('')
                 }
             }
+
         }
-        
     });
 });
 </script>

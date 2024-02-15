@@ -21,7 +21,6 @@
                 @include('front.message')
                 <div class="card border-0 shadow mb-4">
                     <form action="" method="post" id="userForm" name="userForm">
-                        @csrf
                         <div class="card-body  p-4">
                             <h3 class="fs-4 mb-1">My Profile</h3>
                             <div class="mb-4">
@@ -31,7 +30,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="" class="mb-2">Email*</label>
-                                <input type="text" name="email" id="email"  placeholder="Enter Email" class="form-control" value="{{ $user->email }}">
+                                <input type="email" name="email" id="email"  placeholder="Enter Email" class="form-control" value="{{ $user->email }}">
                                 <p></p>
                             </div>
                             <div class="mb-4">
@@ -75,7 +74,7 @@
 </section>
 @endsection
 
-@section('customJs')
+@section('customjs')
 <script type="text/javascript">
 $("#userForm").submit(function(e){
     e.preventDefault();
