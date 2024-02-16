@@ -161,7 +161,7 @@ class AccountController extends Controller
    public function saveJob(Request $request){
       $rules = [
          'title'=>'required|min:5|max:200',
-         'categroy'=>'required',
+         'category'=>'required',
          'jobType'=>'required',
          'vacancy'=>'required|integer',
          'location'=>'required|max:50',
@@ -175,7 +175,7 @@ class AccountController extends Controller
          $job->title = $request->title;
          $job->category_id = $request->category;
          $job->job_type_id = $request->jobType;
-         $job->user_id = $request-> Auth::user()->id;
+         $job->user_id = Auth::user()->id;
          $job->vacancy = $request->vacancy;
          $job->salary = $request->salary;
          $job->location = $request->location;

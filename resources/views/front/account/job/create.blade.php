@@ -81,7 +81,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="" class="mb-2">Benefits</label>
-                        <textarea class="form-control" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits"></textarea>
+                        <textarea class="form-control" name="benifits" id="benifits" cols="5" rows="5" placeholder="Benefits"></textarea>
                         <p></p>
                     </div>
                     <div class="mb-4">
@@ -91,7 +91,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="" class="mb-2">Qualifications</label>
-                        <textarea class="form-control" name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications"></textarea>
+                        <textarea class="form-control" name="qualification" id="qualification" cols="5" rows="5" placeholder="Qualifications"></textarea>
                         <p></p>
                     </div>
                     
@@ -130,14 +130,14 @@
 
                         <div class="mb-4 col-md-6">
                             <label for="" class="mb-2">Location</label>
-                            <input type="text" placeholder="Location" id="location" name="location" class="form-control">
+                            <input type="text" placeholder="Location" id="company_location" name="company_location" class="form-control">
                             <p></p>
                         </div>
                     </div>
 
                     <div class="mb-4">
                         <label for="" class="mb-2">Website</label>
-                        <input type="text" placeholder="Website" id="website" name="website" class="form-control">
+                        <input type="text" placeholder="Website" id="company_website" name="company_website" class="form-control">
                         <p></p>
                     </div>
                 </div> 
@@ -221,17 +221,17 @@ $("#createJobForm").submit(function(e){
                     .html('')
                 }
 
-                if (errors.category) {
-                    $("#category").addClass('is-invalid')
+              if (errors.categroy) {
+                $("#category").addClass('is-invalid')
                     .siblings('p')
                     .addClass('invalid-feedback')
-                    .html(errors.category)
+                    .html(errors.categroy)
                 } else {
-                    $("#category").removeClass('is-invalid')
+                     $("#category").removeClass('is-invalid')
                     .siblings('p')
                     .removeClass('invalid-feedback')
                     .html('')
-                }
+}
 
                 if (errors.jobType) {
                     $("#jobType").addClass('is-invalid')

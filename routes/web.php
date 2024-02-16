@@ -36,6 +36,5 @@ Route::group(['middleware'=>'guest'],function(){
         Route::get('account/create-job', [AccountController::class, 'createJob'])->name('account.createJob');
         Route::post('account/save-job', [AccountController::class, 'saveJob'])->name('account.saveJob');
         Route::get('account/my-jobs', [AccountController::class, 'myJobs'])->name('account.myJobs');
-        
     });
 });
