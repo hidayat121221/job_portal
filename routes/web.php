@@ -22,19 +22,19 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 Route::group(['account'],function(){
     //Guest route
 Route::group(['middleware'=>'guest'],function(){
-    Route::get('account/register',[AccountController::class,'registration'])->name('account.register');
-    Route::get('account/login',[AccountController::class,'login'])->name('account.login');
-    Route::post('account/proccessregister', [AccountController::class, 'processRegistration'])->name('account.processRegistration');
-    Route::post('account/authenticate', [AccountController::class, 'authenticate'])->name('account.authenticate');
+    Route::get('/register',[AccountController::class,'registration'])->name('account.register');
+    Route::get('/login',[AccountController::class,'login'])->name('account.login');
+    Route::post('t/proccessregister', [AccountController::class, 'processRegistration'])->name('account.processRegistration');
+    Route::post('/authenticate', [AccountController::class, 'authenticate'])->name('account.authenticate');
 });
     //Authenticat route
     Route::group(['middleware'=>'auth'],function(){
-        Route::get('account/profile', [AccountController::class, 'profile'])->name('account.profile');
-        Route::put('account/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
-        Route::get('account/logout', [AccountController::class, 'logout'])->name('account.logout');
-        Route::post('account/update-profile-pic', [AccountController::class, 'updateProfilePic'])->name('account.updateProfilePic');
-        Route::get('account/create-job', [AccountController::class, 'createJob'])->name('account.createJob');
-        Route::post('account/save-job', [AccountController::class, 'saveJob'])->name('account.saveJob');
-        Route::get('account/my-jobs', [AccountController::class, 'myJobs'])->name('account.myJobs');
+        Route::get('/profile', [AccountController::class, 'profile'])->name('account.profile');
+        Route::put('/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
+        Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');
+        Route::post('/update-profile-pic', [AccountController::class, 'updateProfilePic'])->name('account.updateProfilePic');
+        Route::get('/create-job', [AccountController::class, 'createJob'])->name('account.createJob');
+        Route::post('/save-job', [AccountController::class, 'saveJob'])->name('account.saveJob');
+        Route::get('/my-jobs', [AccountController::class, 'myJobs'])->name('account.myJobs');
     });
 });

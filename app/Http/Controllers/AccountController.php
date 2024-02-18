@@ -205,6 +205,9 @@ class AccountController extends Controller
       }
    }
    public function myJobs(){
-      return view('front.account.job.my-jobs');
+      $jobs = Job::where('user_id',Auth::user()->id)->paginate(10); 
+      return view('front.account.job.my-jobs',[
+         'jobs'=> $jobs
+      ]);
    }
 }
