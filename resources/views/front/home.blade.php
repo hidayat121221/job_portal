@@ -63,7 +63,7 @@
     </div>
 </section>
 
-<section class="section-3  py-5">
+{{-- <section class="section-3  py-5">
     <div class="container">
         <h2>Featured Jobs</h2>
         <div class="row pt-5">
@@ -71,7 +71,8 @@
                 <div class="job_lists">
                     <div class="row">
                         @if ($featuredJobs->isNotEmpty())
-                            @foreach ($featuredJobs as $featuredJob)
+                        @foreach ($featuredJobs as $featuredJob)
+                        dd($featuredJob);
                             <div class="col-md-4">
                                 <div class="card border-0 p-3 shadow mb-4">
                                     <div class="card-body">
@@ -87,27 +88,27 @@
                                                 <span class="ps-1">{{ $featuredJob->jobType->name }}</span>
                                             </p>
                                             @if (!is_null($featuredJob->salary))
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">{{ $featuredJob->salary }}</span>
-                                            </p>
+                                                <p class="mb-0">
+                                                    <span class="fw-bolder"><i class="fa fa-usd"></i></span>
+                                                    <span class="ps-1">{{ $featuredJob->salary }}</span>
+                                                </p>
                                             @endif                                            
                                         </div>
-    
+                    
                                         <div class="d-grid mt-3">
-                                            {{-- <a href="{{ route('jobDetail',$featuredJob->id) }}" class="btn btn-primary btn-lg">Details</a> --}}
+                                            <a href="{{ route('jobDetail', $featuredJob->id) }}" class="btn btn-primary btn-lg">Details</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
-                        @endif
+                        @endforeach
+                    @endif                    
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <section class="section-3 bg-2 py-5">
     <div class="container">
@@ -143,7 +144,7 @@
                                     </div>
 
                                     <div class="d-grid mt-3">
-                                        {{-- <a href="{{ route('jobDetail',$latestJob->id) }}" class="btn btn-primary btn-lg">Details</a> --}}
+                                        <a href="#" class="btn btn-primary btn-lg">Details</a>
                                     </div>
                                 </div>
                             </div>
