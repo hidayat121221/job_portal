@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/job',[JobsController::class,'index'])->name('job');
+Route::get('/job/detail{id}',[JobsController::class,'detail'])->name('detail');
+Route::post('/apply-job',[JobsController::class,'applyJob'])->name('applyJob');
 
 
 
