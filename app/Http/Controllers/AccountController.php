@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\JobApplication;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
@@ -300,5 +301,37 @@ class AccountController extends Controller
       ]);
 
   }
+
+  public function myJobApplications(){
+   $jobApplications = JobApplication::where('user_id',Auth::user()->id)
+         ->with(['job','job.jobType','job.applications'])
+         ->paginate(10);
+
+   return view('front.account.job.my-job-applications',[
+      'jobApplications'=> $jobApplications
+   ]);
+  }
+
+  public function removeJobs(Request $request){
+   $jobApplication = JobApplication::where([
+                               'id' => $request->id, 
+                               'user_id' => Auth::user()->id]
+                           )->first();
    
+   if ($jobApplication == null) {
+       session()->flash('error','Job application not found');
+       return response()->json([
+           'status' => false,                
+       ]);
+   }
+
+   JobApplication::find($request->id)->delete();
+   session()->flash('success','Job application removed successfully.');
+
+   return response()->json([
+       'status' => true,                
+   ]);
+
+   }
 }
+
