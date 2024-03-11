@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\JobApplication;
 use App\Models\JobType;
 use App\Models\Job;
+use App\Models\SavedJob;
 use App\Models\User;
 use illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -109,5 +110,40 @@ class JobsController extends Controller
             'status' => true,  
             'message' => 'You have successfuly applied'
             ]);
+    }
+
+    public function SavedJob(Request $request){
+        $id = $request->id;
+        $job = Job::find($id);
+
+        if($job == null){
+            session()->flash('error','job not found');
+            return response()->json([
+                'status' => false,  
+                'message' => 'You have successfuly applied'
+                ]);
+        }
+        //Check if user already saved the job
+        $count =  SavedJob::where([
+        'user_id'=> Auth::user()->id,
+        'job_id'=>$id
+        ])->count();
+
+        if($count > 0){
+            session()->flash('error','You already saved on this job');
+            return response()->json([
+                'status' => false,  
+                ]);
+        }
+
+        $savedJob = new SavedJob;
+        $savedJob->job_id = $id;
+        $savedJob->user_id = Auth::user()->id;
+
+        session()->flash('success','You have successfuly saved the job');
+        return response()->json([
+            'status' => true,  
+            ]);
+
     }
 }

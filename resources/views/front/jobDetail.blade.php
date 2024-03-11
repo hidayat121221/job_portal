@@ -77,7 +77,12 @@
                        
                         <div class="border-bottom"></div>
                         <div class="pt-3 text-end">
-                            <a href="#" class="btn btn-secondary">Save</a>
+
+                            @if (Auth::check())
+                            <a href="#" onclick="SavedJob({{ $job->id }});" class="btn btn-secondary">Save</a>
+                             @else 
+                             <a href="javascript:void(0);" class="btn btn-secondary disabled"> Login to Saved</a>
+                            @endif
 
                             @if (Auth::check())
                             <a href="#" onclick="applyJob({{ $job->id }})" class="btn btn-primary">Apply</a>
@@ -146,6 +151,20 @@
         if (confirm("Are you sure you want to apply on this job?")) {
             $.ajax({
                 url : '{{ route('applyJob') }}',
+                type: 'post',
+                data: {id:id},
+                dataType: 'json',
+                success: function(response) {
+                    window.location.href = "{{ url()->current() }}";
+                } 
+            });
+        }
+    }
+
+    function SavedJob(id){
+        if (confirm("Are you sure you want to apply on this job?")) {
+            $.ajax({
+                url: '{{ route('SavedJob') }}',
                 type: 'post',
                 data: {id:id},
                 dataType: 'json',
